@@ -1,0 +1,137 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.lfork.a98620.lfree.main.index.IndexFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lfork.a98620.lfree.main.index.IndexFragmentViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:background="@color/white"
+                android:focusableInTouchMode="true"
+                app:layout_scrollFlags="scroll">
+                <!--android:focusableInTouchMode="true" 这个可以禁用 search view自动获取焦点-->
+
+                <RelativeLayout
+                    android:id="@+id/top_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/Login_ForeColor"
+                    android:elevation="6dp"
+                    tools:targetApi="lollipop">
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="6dp"
+                        android:src="@drawable/main_icon"
+                        android:contentDescription="@string/todo" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_toEndOf="@id/icon"
+                        android:background="@drawable/main_shape_search_rectangle"
+                        android:drawableStart="@drawable/main_ic_search_grey_24dp"
+                        android:focusable="false"
+                        android:hint="Java从入门到精通"
+                        android:onClick="@{()->viewModel.openSearch()}"
+                        android:padding="8dp"
+                        android:inputType="none" />
+
+                </RelativeLayout>
+
+                <com.youth.banner.Banner
+                    android:id="@+id/announcement_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/top_frame">
+                </com.youth.banner.Banner>
+
+            </RelativeLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <RelativeLayout
+            android:background="@color/base_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:visibility="@{viewModel.dataIsLoading ? View.VISIBLE : View.GONE}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ProgressBar
+                android:id="@+id/login_progress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_progress"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:visibility="@{viewModel.dataIsLoading?View.GONE:View.VISIBLE}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.design.widget.TabLayout
+                android:paddingTop="5dp"
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/sub_background"
+                app:tabIndicatorColor="@color/Login_ForeColor"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/Login_ForeColor"
+                tools:targetApi="lollipop">
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:background="@color/sub_background"
+                app:tabs="@{viewModel.categories}"
+                android:id="@+id/main_index_frag_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</layout>

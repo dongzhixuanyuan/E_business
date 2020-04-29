@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Login_ForeColor">#0aa4ea</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000</color>
+    <color name="Login_Button">#b1bc39</color>
+    <color name="Login_EditColor">#f4f4f8</color>
+    <color name="Login_BorderColor">#c1c4d6</color>
+    <color name="Home_Goods_Text">#abafae</color>
+    <color name="Home_Goods_Text2">#fff</color>
+    <color name="Home_Goods_Money">#ffd648</color>
+    <color name="Home_act_text">#d7d7d7</color>
+
+    <color name="halfTransparent">#80000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="main_button_bar_text_color">#000</color>
+
+    <color name="red">#FF3B00</color>
+    <color name="red_press">#990000</color>
+    <color name="dark_gray">#4C535B</color>
+    <color name="dark_gray_press">#ff7e8a97</color>
+
+    <color name="viewColor">#f2f2f2</color>
+
+    <color name="main_color">#0aa4ea</color>
+
+    <color name="community_refresh">#6cf</color>
+
+    <color name="base_background">#fafafa</color>
+
+    <color name="sub_background">#f2f2f2</color>
+</resources>

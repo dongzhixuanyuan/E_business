@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.lfork.a98620.lfree.base.viewmodel.GoodsViewModel" />
+    </data>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:onClick="@{()->viewModel.onClick()}">
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/goods_image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                app:setImageWithDiskCache="@{viewModel.imagePath}" />
+
+            <TextView
+                android:id="@+id/goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/goods_image"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/goods_image"
+                android:hint="goods_name"
+                android:text="@{viewModel.name}"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/goods_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/goods_name"
+                android:layout_below="@+id/goods_name"
+                android:layout_marginTop="6dp"
+                android:hint="2018年6月13日00:00:00"
+                android:text="@{viewModel.publishDate}" />
+
+            <TextView
+                android:id="@+id/goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/goods_image"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:hint="价格"
+                android:text="@{viewModel.price}"
+                android:textColor="@color/Home_Goods_Money"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_below="@id/layout"
+            android:background="@color/viewColor" />
+    </RelativeLayout>
+</layout>

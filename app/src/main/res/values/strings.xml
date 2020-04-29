@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">L.Free</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">用户名/学号/邮箱</string>
+    <string name="prompt_username">用户名</string>
+    <string name="prompt_username_register">用户名(5~16位)</string>
+    <string name="prompt_student_id">学号 10位</string>
+    <string name="prompt_password">密码</string>
+    <string name="prompt_password_register">字母+数字，8~16位</string>
+    <string name="prompt_register">注册</string>
+    <string name="register">注册新用户</string>
+    <string name="welcome">Welcome to L.free!</string>
+
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">密码太短</string>
+    <string name="error_incorrect_password">请检查你的账号和密码</string>
+    <string name="error_field_required">请输入账号</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."</string>
+
+    <string name="forget_password">忘记密码？</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_user_icon">login_user_icon</string>
+    <string name="login_password_icon">login_password_icon</string>
+    <string name="confirm_password">请再输入一遍密码</string>
+    <string name="login_logging">正在登录…</string>
+    <string name="loading">正在加载…</string>
+
+    <string name="send">Send</string>
+    <string name="type_something_here">Type something here</string>
+    <string name="todo">TODO</string>
+    <string name="searching">搜索中…</string>
+    <string name="tempSchool">temp school : cuit</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="share">分享</string>
+    <string name="address">位置:</string>
+    <string name="commit">提交</string>
+    <string name="uploading">正在上传…</string>
+    <string name="choose_image">选择图片上传</string>
+    <string name="goods_name">商品名</string>
+    <string name="goods_description">商品描述</string>
+    <string name="origin_price">原价:</string>
+    <string name="sell_price">卖价:</string>
+    <string name="category">分类:</string>
+    <string name="private_chat">私聊</string>
+    <string name="chat_record">聊天记录</string>
+    <string name="tips_chat">您还没有与卖家交流过，赶快去寻找卖家进行交流吧~~</string>
+
+</resources>

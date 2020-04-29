@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lfork.a98620.lfree.searchresult.GoodsSearchViewModel"/>
+        <import type="android.view.View"/>
+
+    </data>
+
+
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lfork.a98620.lfree.searchresult.GoodsSearchActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--android:theme="@style/AppTheme.AppBarOverlay"-->
+        <!--app:popupTheme="@style/AppTheme.PopupOverlay"-->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/Login_ForeColor">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <SearchView
+                    android:id="@+id/toolbar_search"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="8"
+                    android:background="@drawable/main_shape_search_rectangle"
+                    android:iconifiedByDefault="false"
+                    android:padding="5dp"
+                    android:queryHint="@{viewModel.recommendKeyword}" />
+                <!--@={viewModel.keyword}  @=   android:text="@{viewModel.keyword}"{viewModel.recommendKeyword}-->
+
+                <Button
+                    android:id="@+id/search_back"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:onClick="@{()->viewModel.cancel()}"
+                    android:text="取消"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <!-- "-->
+            </LinearLayout>
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="@{viewModel.dataIsLoading ? View.VISIBLE : View.GONE}">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress"
+            android:gravity="center"
+            android:text="@string/searching"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:setRecyclerViewItems="@{viewModel.items}"
+        android:layout_marginTop="56dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</android.support.design.widget.CoordinatorLayout>
+</layout>

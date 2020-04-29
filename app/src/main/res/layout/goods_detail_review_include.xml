@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.lfork.a98620.lfree.goodsdetail.GoodsDetailViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
+
+        <View
+            android:id="@+id/view_layout"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/viewColor" />
+
+
+        <LinearLayout
+            android:id="@+id/review_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_layout">
+
+
+            <EditText
+                android:id="@+id/review_content"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:hint="有没有什么想法呢？"
+                android:inputType="text"
+                android:text="@={viewModel.review}" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:background="@color/Login_Button"
+                android:onClick="@{()->viewModel.addReview()}"
+                android:text="发布评论"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_below="@id/review_layout"
+            android:background="@color/viewColor" />
+
+        <TextView
+
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_layout1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_comment_message"
+            android:text="评论区"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/no_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view"
+            android:layout_marginBottom="10dp"
+            android:drawablePadding="10dp"
+            android:visibility="@{viewModel.reviewDataIsEmpty ? View.VISIBLE : View.GONE}"
+            android:drawableTop="@drawable/ic_talk_notalk"
+            android:gravity="center"
+            android:text="还没有人评论过哦~~" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/review_recycle"
+            app:setRecyclerViewItems="@{viewModel.reviewItems}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/no_comment">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+</layout>
