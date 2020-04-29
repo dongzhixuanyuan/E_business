@@ -33,6 +33,6 @@ interface GoodsDataSource : DataSource {
 
     fun newGetBookCategory(callback:(Categories)->Unit)
 
-    fun newGetBooksForCategory(callback: (Books) -> Unit,categoryId: Int)
+    fun newGetBooksForCategory( categoryId: Int ,callback: (Array<Any>) -> Unit)
 
 }

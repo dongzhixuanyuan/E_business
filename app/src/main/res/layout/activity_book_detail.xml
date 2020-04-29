@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.BookDetailActivity">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/top_back_ground"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="#C10E0101"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cover_img"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_photo_camera_white_24dp" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cover_img"
+            tools:text="百年孤独" />
+
+
+        <TextView
+            android:id="@+id/catalog_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/holo_orange_dark"
+            app:layout_constraintLeft_toLeftOf="@id/title_tv"
+            app:layout_constraintTop_toBottomOf="@id/title_tv"
+            tools:text="外国文学 小说 经典名著" />
+
+        <TextView
+            android:id="@+id/reading_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintLeft_toLeftOf="@id/title_tv"
+            app:layout_constraintTop_toBottomOf="@id/catalog_tv"
+            tools:text="782人阅读" />
+
+        <TextView
+            android:id="@+id/by_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@id/top_back_ground"
+            app:layout_constraintLeft_toLeftOf="@id/title_tv"
+            tools:text="2015年03月14日" />
+
+
+        <TextView
+            android:id="@+id/sub_title_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintLeft_toLeftOf="@id/title_tv"
+            app:layout_constraintTop_toBottomOf="@id/top_back_ground"
+            tools:text="关于苦难的世界名著《悲惨世界》" />
+
+
+        <TextView
+
+            android:id="@+id/sub_title_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:scrollbars="vertical"
+            android:textColor="#8B8585"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="@id/title_tv"
+            app:layout_constraintTop_toBottomOf="@id/sub_title_one"
+            tools:text="义、宗教信仰，作者对小说主要人物的原型、场景、社会现象进行了大量资料的收集和实地考察，雨果讲述每一个社会局部，都有着新闻记者似的准确，田野调查般的详实，作品几乎是一部拿破仑时代关于巴黎的百科全书。从构思到成书，历时30年，作者命运起起伏伏，社会也发生巨大改变，既为作者积累丰富的材料，也让作者目光变得更加深邃。在深度上，作者对人类苦难和人性有着触达灵魂的思考，《悲惨世界》被誉为人类苦难的百科全书。在人性的思考上，中国的文学和影视作品和欧美相差甚远，希望国人可以多读世界名著。\n金庸大师的《神雕侠侣》中，郭靖对杨过说，善与恶，都在一念之间。一念之差，杨康成了人人唾弃的卖国贼；一念之上，杨过成了神雕大侠。很多作品中，坏人总是极坏的，从里到外都是坏的；好人总是极好的，常因为好的过头而吃了坏人的大亏，让读者虐心。我们从小就被教育为非黑即白，事实上世界不是黑的也不是白的，而是灰的。没有人生下来就是坏人，一个人作恶，很多时候，社会负有很大的责任。《悲惨世界》主角冉阿让本是一个贫困的市民，老实本分的养家糊口，具有劳动人民吃苦耐劳的优良品质。直到社会让他失了业，和姐姐一家饿了肚子几天，为了救活7个外甥，跑到面包店偷了一个面包，被判入狱5年。出于对司法的不信任，冉阿让多次越狱被抓回，前后一共在牢中做苦役19年。19年的牢狱生活没有让冉阿让往好的一面改变，反而变得仇恨一切，不相信任何人，变成一个孤独而凶狠的男人.出狱后，冉阿让因为一张带有犯罪记录标识的身份证，被社会视作危险人物，天下之大，没有容身之地。“我又走到另外一家客店。他们对我说：‘滚！’这家不要我。那家也不要我。我又到了监狱，看门的人也不肯开门。我也到过狗窝。那狗咬了我，也把我撵了出来，好象它也是人似的，好象它也知道我是谁似的。我就跑到田里，打算露天过一宵。可是天上没有星。我想天要下雨了，又没有好天主阻挡下雨，我再回到城里”。最终，好心的主教米里哀收留了他，称他“我的兄弟”，并把招待客人才用的银餐具拿出来，与他共进晚餐，留他住宿，让冉阿让19年来第一次睡上了床。当天夜里，冉阿让再次犯罪，偷走了主教用餐的银器，第二天早上被警察押回主教家里。结果主教说，“呀!您来了!我真高兴再次见到您。我得提醒您，您把烛台忘记了，它和别的东西一样都是您的，您可以变卖200法郎。为什么您不把那对烛台和餐具一同带走?”。主教 的谎言救了冉阿让。警察走后，主教对冉阿让说“不要忘记，永远不要忘记您对我所做的允诺，您用这些银器是为了要做一个诚实的人。”，“冉阿让，我的兄弟，你已经不是恶人了，你是在善人一方的了。我赎的是你的灵魂，我把它从黑暗的思想和自暴自弃的精神里救出来，交还给上帝。”主教抛弃法律，为了信仰和道德，做了伪证。宁愿自己承担教撒谎和不诚实的罪过，也要拯救冉阿让的灵魂，践行了信仰中的一个更高准则，牺牲自己拯救他人，我不入地狱，谁入地狱。主教感化了冉阿让，冉阿让决定重新做人，走上灵魂救赎之路。\n冉阿让改名换姓，化名马德兰来到偏远小城，凭借玻璃首饰工厂发财致富。马德兰一直没有忘记主教的期望，做一个正直善良的人。他的工厂招人条件只有一个：做诚实的男子。做诚实的姑娘。他自己一直过着朴素的生活，为穷人和慈善话费了上百万法郎，扩建医院，修建学校，建立贫儿院，设立老人和残疾人救济金，工厂开设免费药房。德高望重的马德兰做上了当地市长。为了救一个被压在马车下的农民，冒着暴露身份的危险和生命危险，钻到马车地下用背扛起马车。;\n沙威是一个曾经见过冉阿让的警察，他一直怀疑马德兰就是冉阿让，并暗中调查，虽然目睹马德兰做了很多好事，但是一旦证实马德兰就是冉阿让，沙威就会毫不客气的将马德兰抓起来投进监狱。几年过去了，沙威一直没找到证据，直到他听说冉阿让已经入狱并经过亲自确认，沙威认为自己怀疑马德兰是冉阿让，作为底层军官，严重冒犯了马德兰，请求马德兰将他革职。沙威正直、直率、诚实、铁面无私、敬业，又毫无同情心、残忍，是统治者制定的社会秩序的坚决维护者，沙威的冷酷，很大程度上由于是现行制度的冷酷和法律的严峻。他认为一个人要是犯了罪，一辈子都是罪犯，不会改变。他的追求就是把他眼中的那些罪犯——游民无赖，小偷，杀人犯，妓女之流全都送进监狱，送上断头台，永世不得翻身。对下层人民冷漠无情，觉得下层人民都是渣滓；对上层社会宽容，认为上层社会神圣不可冒犯。绅士调戏妓女芳汀，芳汀与绅士厮打在一起，沙威以冒犯绅士的罪名，无情的判芳汀入狱6个月，不顾芳汀入狱后孩子无人照顾，不惜与市长顶撞也要把芳汀送进监狱。而他奉命监视起义的大学生时，对掌握的大学" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

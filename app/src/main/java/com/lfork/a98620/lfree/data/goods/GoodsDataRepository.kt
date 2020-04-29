@@ -10,6 +10,10 @@ import com.lfork.a98620.lfree.data.base.entity.GoodsDetailInfo
 import com.lfork.a98620.lfree.data.base.entity.Review
 import com.lfork.a98620.lfree.data.goods.local.GoodsLocalDataSource
 import com.lfork.a98620.lfree.data.goods.remote.GoodsRemoteDataSource
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Function
+import io.reactivex.schedulers.Schedulers
 
 /**
  *
@@ -118,8 +122,23 @@ object GoodsDataRepository : GoodsDataSource {
         remoteDataSource.newGetBookCategory(callback)
     }
 
-    override fun newGetBooksForCategory(callback: (Books) -> Unit, categoryId: Int) {
-        remoteDataSource.newGetBooksForCategory(callback,categoryId)
+
+
+    override fun newGetBooksForCategory( categoryId: Int ,callback: (Array<Any>) -> Unit) {
+        var mergerObservable:MutableList<Observable<Books>> = arrayListOf<Observable<Books>>()
+
+        remoteDataSource.newGetBookCategory{
+
+            it.result.forEach {
+                   mergerObservable.add(GoodsRemoteDataSource.api.newGetBooks(catalog_id = it.id.toInt()))
+            }
+            Observable.zip(mergerObservable, {
+                it
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    callback(it)
+                }
+        }
     }
 
 

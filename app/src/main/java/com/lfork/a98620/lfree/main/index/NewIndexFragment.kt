@@ -3,12 +3,18 @@ package com.lfork.a98620.lfree.main.index
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lfork.a98620.lfree.R
 import com.lfork.a98620.lfree.data.base.entity.BookCategory
+import com.lfork.a98620.lfree.data.base.entity.Books
+import com.lfork.a98620.lfree.data.base.entity.Category
+import com.lfork.a98620.lfree.data.base.entity.Data
 import com.lfork.a98620.lfree.data.goods.GoodsDataRepository
+import com.lfork.a98620.lfree.main.BookDetailActivity
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.new_index_fragment.*
 
 /**
@@ -30,21 +36,26 @@ class NewIndexFragment: Fragment() {
     }
 
     private var categoryAdapter:CategoryGridAdapter? = null
+    private var allBoks:MutableList<Data> = arrayListOf()
     private var categories:MutableList<BookCategory> = arrayListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        categoryAdapter = CategoryGridAdapter(categories, object : ItemClickListener {
-            override fun onItemClick(position: Int) {
-
+        categoryAdapter = CategoryGridAdapter(allBoks, object : ItemClickListener {
+            override fun onItemClick(bean: Data) {
+                BookDetailActivity.startDetailBookActivity(context!!,bean)
             }
         })
         categories_rv.adapter = categoryAdapter
         categories_rv.layoutManager = GridLayoutManager(context,2)
-        GoodsDataRepository.newGetBookCategory {
-            categories.addAll(it.result)
+
+
+        GoodsDataRepository.newGetBooksForCategory(248) {
+            it.forEach {
+                allBoks.addAll((it as Books).result.data)
+            }
             categoryAdapter?.notifyDataSetChanged()
         }
     }

@@ -31,6 +31,7 @@ import com.lfork.a98620.lfree.imservice.MessageService;
 import com.lfork.a98620.lfree.main.chatlist.ChatListFragment;
 import com.lfork.a98620.lfree.main.community.CommunityFragment;
 import com.lfork.a98620.lfree.main.index.IndexFragment;
+import com.lfork.a98620.lfree.main.index.NewIndexFragment;
 import com.lfork.a98620.lfree.main.myinfo.MyInfoFragment;
 import com.lfork.a98620.lfree.main.publishinfo.PublishInfoFragment;
 
@@ -249,7 +250,8 @@ public class MainActivity extends AppCompatActivity {
     private void initFragments() {
         fragments = new ArrayList<>();
         fragments.add(new PublishInfoFragment());
-        fragments.add(new IndexFragment());
+//        fragments.add(new IndexFragment());
+        fragments.add(new NewIndexFragment());
         fragments.add(new ChatListFragment());
         fragments.add(new MyInfoFragment());
         fragments.add(new CommunityFragment());

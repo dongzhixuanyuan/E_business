@@ -80,15 +80,15 @@ interface GoodsApi {
 
     @GET("http://apis.juhe.cn/goodbook/query")
     fun newGetBooks(
-        @Field("key") key: String ="cd7d525d9e4dc9d95b6a4b18f2b839ff",
-        @Field("catalog_id") catalog_id: Int =258,
-                    @Field("pn") pn: Int = 0,
-                    @Field("rn") rn: Int = 10,
-                    @Field("dtype") dtype: String = "json"
+        @Query("key") key: String ="cd7d525d9e4dc9d95b6a4b18f2b839ff",
+        @Query("catalog_id") catalog_id: Int =258,
+                    @Query("pn") pn: Int = 0,
+                    @Query("rn") rn: Int = 10,
+                    @Query("dtype") dtype: String = "json"
     ):Observable<Books>
 
     @GET("http://apis.juhe.cn/goodbook/catalog")
-    fun newGetBookCategory(@Field("dtype") dtype:String = "json"):Observable<Categories>
+    fun newGetBookCategory(  @Query("key") key: String ="cd7d525d9e4dc9d95b6a4b18f2b839ff",@Query("dtype") dtype:String = "json"):Observable<Categories>
 
 
     companion object {

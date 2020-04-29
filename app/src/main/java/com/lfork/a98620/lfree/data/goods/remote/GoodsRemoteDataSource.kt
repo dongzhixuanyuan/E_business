@@ -160,14 +160,14 @@ object GoodsRemoteDataSource : GoodsDataSource {
             },{})
     }
 
-    override fun newGetBooksForCategory(callback: (Books) -> Unit, categoryId: Int) {
-        api.newGetBooks(catalog_id = categoryId).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                 callback(it)
-            },
-                {
-                })
+    override fun newGetBooksForCategory( categoryId: Int ,callback: (Array<Any>) -> Unit) {
+//        api.newGetBooks(catalog_id = categoryId).subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe({
+//                 callback(it)
+//            },
+//                {
+//                })
     }
 
 

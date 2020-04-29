@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".main.BookDetailActivity"></activity>
         <activity
             android:name=".main.MainActivity"
             android:screenOrientation="portrait">
@@ -26,8 +27,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--android:theme="@style/AppThemeNoActionBar"-->
+        </activity> <!-- android:theme="@style/AppThemeNoActionBar" -->
         <activity
             android:name=".chatwindow.ChatWindowActivity"
             android:launchMode="singleTask" />
@@ -45,8 +45,7 @@
         <activity android:name=".userinfothis.UserInfoThisActivity" />
         <activity
             android:name=".welcome.WelcomeActivity"
-            android:theme="@style/WelcomeTheme">
-        </activity>
+            android:theme="@style/WelcomeTheme"></activity>
         <activity android:name=".register.RegisterActivity" />
         <activity android:name=".userinfoedit.UserInfoEditActivity" />
 
@@ -68,12 +67,12 @@
         <service
             android:name=".imservice.MessageService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity android:name=".publisharticle.PublishArticleActivity" />
         <activity android:name=".articlecontent.ArticleContentActivity" />
         <activity android:name=".imagebrowser.ImageBrowserActivity" />
-        <activity android:name=".webclient.WebClient"></activity>
+        <activity android:name=".webclient.WebClient" />
     </application>
 
 </manifest>

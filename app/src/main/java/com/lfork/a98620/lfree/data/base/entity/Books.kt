@@ -1,5 +1,7 @@
 package com.lfork.a98620.lfree.data.base.entity
 
+import java.io.Serializable
+
 /**
  * @description 文件描述
  *
@@ -11,14 +13,14 @@ data class Books(
     val reason: String,
     val result: Result,
     val resultcode: String
-)
+):Serializable
 
 data class Result(
     val `data`: List<Data>,
     val pn: Int,
     val rn: String,
     val totalNum: String
-)
+):Serializable
 
 data class Data(
     val bytime: String,
@@ -30,16 +32,16 @@ data class Data(
     val sub2: String,
     val tags: String,
     val title: String
-)
+):Serializable
 
 data class Categories(
     val error_code: Int,
     val reason: String,
     val result: List<BookCategory>,
     val resultcode: String
-)
+):Serializable
 
 data class BookCategory(
     val catalog: String,
     val id: String
-)
+):Serializable
