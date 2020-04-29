@@ -22,11 +22,7 @@
         <activity
             android:name=".main.MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity> <!-- android:theme="@style/AppThemeNoActionBar" -->
         <activity
             android:name=".chatwindow.ChatWindowActivity"
@@ -35,7 +31,14 @@
         <activity android:name=".goodsuploadupdate.GoodsUploadUpdateActivity" />
         <activity
             android:name=".login.LoginActivity"
-            android:theme="@style/LoginTheme" />
+            android:theme="@style/LoginTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".mygoods.MyGoodsActivity" />
         <activity
             android:name=".searchresult.GoodsSearchActivity"

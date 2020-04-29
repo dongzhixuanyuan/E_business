@@ -11,6 +11,10 @@ import com.lfork.a98620.lfree.base.FreeApplication;
 import com.lfork.a98620.lfree.data.DataSource;
 import com.lfork.a98620.lfree.data.base.entity.User;
 import com.lfork.a98620.lfree.data.user.UserDataRepository;
+import com.lfork.a98620.lfree.util.file.AppSp;
+import com.lfork.a98620.lfree.util.file.PreferenceKeys;
+
+import java.util.Set;
 
 /**
  * @author 98620
@@ -42,8 +46,8 @@ public class LoginViewModel extends BaseViewModel {
         super.start();
         this.isLogging.set(false);
         repository = UserDataRepository.INSTANCE;
-        // getLoginInfo();
-        navigator.loginSucceed();
+        getLoginInfo();
+//        navigator.loginSucceed();
     }
 
     @Override
@@ -56,7 +60,7 @@ public class LoginViewModel extends BaseViewModel {
 
     /**
      * 获取判断最近的登录信息 ，如果已经登录的话就直接启动主界面了
-     *
+     * <p>
      * 这里直接与二号数据仓库(SharedPreferences 进行通信了)
      */
     private void getLoginInfo() {
@@ -105,11 +109,11 @@ public class LoginViewModel extends BaseViewModel {
 
         SharedPreferences.Editor editor = context.getSharedPreferences("login_info_" + userId, Context.MODE_PRIVATE).edit();
         editor.putInt("status", status);
-        if (!TextUtils.isEmpty(username.get())){
+        if (!TextUtils.isEmpty(username.get())) {
             editor.putString("username", username.get());
         }
 
-        if (!TextUtils.isEmpty(password.get())){
+        if (!TextUtils.isEmpty(password.get())) {
             editor.putString("password", password.get());
         }
 
@@ -146,28 +150,44 @@ public class LoginViewModel extends BaseViewModel {
         }
 
         isLogging.set(true);
-        repository.login(new DataSource.GeneralCallback<User>() {
-            @Override
-            public void succeed(User data) {
 
-                if (checkNavigator()) {
-                    return;
-                }
-                setLoginInfo(data.getUserId() + "", LoginActivity.STATUS_LOGIN);
-                showToast("登录成功");
-                navigator.loginSucceed();
-                isLogging.set(false);
+        Set<String> nameSet = AppSp.getStringSet(PreferenceKeys.USER_REGISTERS_NAMES);
+        Set<String> passwordSet = AppSp.getStringSet(PreferenceKeys.USER_REGISTERS_PASSWORD);
+        if (nameSet != null && nameSet.contains(username.get()) && passwordSet != null && passwordSet.contains(password.get())) {
+            setLoginInfo(String.valueOf(username.get().hashCode()), LoginActivity.STATUS_LOGIN);
+            showToast("登录成功");
+            navigator.loginSucceed();
+            isLogging.set(false);
+        } else {
+            isLogging.set(false);
+            if (checkNavigator()) {
+                return;
             }
-
-            @Override
-            public void failed(String log) {
-                isLogging.set(false);
-                if (checkNavigator()) {
-                    return;
-                }
-                navigator.loginFailed(log);
-            }
-        }, user);
+            navigator.loginFailed("登录失败");
+        }
+//
+//        repository.login(new DataSource.GeneralCallback<User>() {
+//            @Override
+//            public void succeed(User data) {
+//
+//                if (checkNavigator()) {
+//                    return;
+//                }
+//                setLoginInfo(data.getUserId() + "", LoginActivity.STATUS_LOGIN);
+//                showToast("登录成功");
+//                navigator.loginSucceed();
+//                isLogging.set(false);
+//            }
+//
+//            @Override
+//            public void failed(String log) {
+//                isLogging.set(false);
+//                if (checkNavigator()) {
+//                    return;
+//                }
+//                navigator.loginFailed(log);
+//            }
+//        }, user);
     }
 
     public void register() {

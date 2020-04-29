@@ -1,15 +1,22 @@
 package com.lfork.a98620.lfree.register;
+import	java.util.HashSet;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.databinding.ObservableField;
 import android.util.Log;
 
+import com.lfork.a98620.lfree.base.FreeApplication;
 import com.lfork.a98620.lfree.data.DataSource;
 import com.lfork.a98620.lfree.data.base.entity.School;
 import com.lfork.a98620.lfree.data.base.entity.User;
 import com.lfork.a98620.lfree.data.user.UserDataRepository;
 import com.lfork.a98620.lfree.util.UserValidation;
+import com.lfork.a98620.lfree.util.file.AppSp;
+import com.lfork.a98620.lfree.util.file.PreferenceKeys;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by 98620 on 2018/6/12.  因为注册模块比较简单，暂时就不写viewModel了
@@ -76,22 +83,37 @@ public class RegisterInfoViewModel {
 
         String result = dataValidate();  //等于null，说明注册成功
         if (result == null) {
-            repository.register(new DataSource.GeneralCallback<String>() {
-                @Override
-                public void succeed(String data) {
-                    if (navigator != null) {
-                        navigator.success("注册成功, 请牢记你的账号:" + data);
-                    }
-                }
+            Set<String> stringSet = AppSp.getStringSet(PreferenceKeys.USER_REGISTERS_NAMES);
+            if (stringSet == null) {
+                stringSet = new HashSet<> ();
+            }
+            stringSet.add(username.get());
+            AppSp.putStringSet(PreferenceKeys.USER_REGISTERS_NAMES,stringSet);
 
-                @Override
-                public void failed(String log) {
-                    if (navigator != null) {
-                        navigator.failed("注册失败:" + log);
-                    }
 
-                }
-            }, user);
+            Set<String> passwordSet = AppSp.getStringSet(PreferenceKeys.USER_REGISTERS_PASSWORD);
+            if (passwordSet == null) {
+                passwordSet = new HashSet<>();
+            }
+            passwordSet.add(password.get());
+            AppSp.putStringSet(PreferenceKeys.USER_REGISTERS_PASSWORD,passwordSet);
+            navigator.success("注册成功, 请牢记你的账号:" + username.get());
+//            repository.register(new DataSource.GeneralCallback<String>() {
+//                @Override
+//                public void succeed(String data) {
+//                    if (navigator != null) {
+//                        navigator.success("注册成功, 请牢记你的账号:" + data);
+//                    }
+//                }
+//
+//                @Override
+//                public void failed(String log) {
+//                    if (navigator != null) {
+//                        navigator.failed("注册失败:" + log);
+//                    }
+//
+//                }
+//            }, user);
         } else {
             if (navigator != null) {
                 navigator.failed(result);

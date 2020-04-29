@@ -7,4 +7,5 @@ package com.lfork.a98620.lfree.util;
  */
 public class SharedPrefUtil {
 
+
 }
