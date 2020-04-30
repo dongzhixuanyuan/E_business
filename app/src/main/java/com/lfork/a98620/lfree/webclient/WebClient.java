@@ -1,6 +1,7 @@
 package com.lfork.a98620.lfree.webclient;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.lfork.a98620.lfree.R;
+import com.lfork.a98620.lfree.base.FreeApplication;
 
 import java.util.Objects;
 
@@ -31,13 +33,13 @@ public class WebClient extends AppCompatActivity {
         if (url != null) {
             WebView webView = findViewById(R.id.webview);
             setWebView(webView.getSettings());
-            webView.setWebViewClient(new WebClient.MyWebViewClient(webView));
+            webView.setWebViewClient(new WebClient.MyWebViewClient(webView,this));
             webView.loadUrl(url);
         }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private void setWebView(WebSettings mWebSettings){
+    public static void setWebView(WebSettings mWebSettings){
         mWebSettings.setSupportZoom(true);
         mWebSettings.setLoadWithOverviewMode(true);
         mWebSettings.setUseWideViewPort(true);
@@ -49,7 +51,7 @@ public class WebClient extends AppCompatActivity {
         mWebSettings.setDomStorageEnabled(true);
         mWebSettings.setDatabaseEnabled(true);
 //        mWebSettings.setAppCacheEnabled(true);
-        String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
+        String appCachePath = FreeApplication.getContext().getCacheDir().getAbsolutePath();
         mWebSettings.setAppCachePath(appCachePath);
         //html中的_bank标签就是新建窗口打开，有时会打不开，需要加以下
         //然后 复写 WebChromeClient的onCreateWindow方法
@@ -90,11 +92,13 @@ public class WebClient extends AppCompatActivity {
         context.startActivity(intent);
     }
 
-    private class MyWebViewClient extends WebViewClient {
+    public static class MyWebViewClient extends WebViewClient {
         private WebView webView;
+        private AppCompatActivity context;
 
-        MyWebViewClient(WebView webView) {
+        public MyWebViewClient(WebView webView,AppCompatActivity context ) {
             this.webView = webView;
+            this.context = context;
         }
 
         @Override
@@ -108,7 +112,7 @@ public class WebClient extends AppCompatActivity {
             super.onPageFinished(view, url);
             imgReset();//重置webview中img标签的图片大小  以适应手机的宽度
             addBlock();//屏蔽掉无用的标签
-            setTitle(view.getTitle());
+            Objects.requireNonNull(context.getSupportActionBar()).setTitle(view.getTitle());
         }
 
         @Override
