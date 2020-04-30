@@ -18,12 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.BookDetailActivity"></activity>
+        <activity android:name=".main.BookListActivity"></activity>
+        <activity android:name=".main.BookDetailActivity" />
         <activity
             android:name=".main.MainActivity"
-            android:screenOrientation="portrait">
-
-        </activity> <!-- android:theme="@style/AppThemeNoActionBar" -->
+            android:screenOrientation="portrait"></activity> <!-- android:theme="@style/AppThemeNoActionBar" -->
         <activity
             android:name=".chatwindow.ChatWindowActivity"
             android:launchMode="singleTask" />
@@ -31,13 +30,12 @@
         <activity android:name=".goodsuploadupdate.GoodsUploadUpdateActivity" />
         <activity
             android:name=".login.LoginActivity"
-            android:theme="@style/LoginTheme" >
+            android:theme="@style/LoginTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".mygoods.MyGoodsActivity" />
         <activity
@@ -48,7 +46,7 @@
         <activity android:name=".userinfothis.UserInfoThisActivity" />
         <activity
             android:name=".welcome.WelcomeActivity"
-            android:theme="@style/WelcomeTheme"></activity>
+            android:theme="@style/WelcomeTheme" />
         <activity android:name=".register.RegisterActivity" />
         <activity android:name=".userinfoedit.UserInfoEditActivity" />
 

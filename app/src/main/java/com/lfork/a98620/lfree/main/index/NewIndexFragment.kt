@@ -14,6 +14,7 @@ import com.lfork.a98620.lfree.data.base.entity.Category
 import com.lfork.a98620.lfree.data.base.entity.Data
 import com.lfork.a98620.lfree.data.goods.GoodsDataRepository
 import com.lfork.a98620.lfree.main.BookDetailActivity
+import com.lfork.a98620.lfree.main.BookListActivity
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.new_index_fragment.*
 
@@ -43,21 +44,20 @@ class NewIndexFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        categoryAdapter = CategoryGridAdapter(allBoks, object : ItemClickListener {
-            override fun onItemClick(bean: Data) {
-                BookDetailActivity.startDetailBookActivity(context!!,bean)
+        categoryAdapter = CategoryGridAdapter(categories, object : CategoryItemClickListener {
+            override fun onCategoryItemClick(bean: BookCategory) {
+                    BookListActivity.startBookListActivity(context!!,bean)
             }
         })
         categories_rv.adapter = categoryAdapter
         categories_rv.layoutManager = GridLayoutManager(context,2)
 
-
-        GoodsDataRepository.newGetBooksForCategory(248) {
-            it.forEach {
-                allBoks.addAll((it as Books).result.data)
-            }
+        GoodsDataRepository.newGetBookCategory {
+            categories.addAll(it.result)
             categoryAdapter?.notifyDataSetChanged()
         }
+
+
     }
 
 }

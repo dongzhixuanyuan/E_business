@@ -124,21 +124,22 @@ object GoodsDataRepository : GoodsDataSource {
 
 
 
-    override fun newGetBooksForCategory( categoryId: Int ,callback: (Array<Any>) -> Unit) {
-        var mergerObservable:MutableList<Observable<Books>> = arrayListOf<Observable<Books>>()
-
-        remoteDataSource.newGetBookCategory{
-
-            it.result.forEach {
-                   mergerObservable.add(GoodsRemoteDataSource.api.newGetBooks(catalog_id = it.id.toInt()))
-            }
-            Observable.zip(mergerObservable, {
-                it
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    callback(it)
-                }
-        }
+    override fun newGetBooksForCategory( categoryId: Int ,callback: (Books)->Unit) {
+        remoteDataSource.newGetBooksForCategory(categoryId, callback)
+//        var mergerObservable:MutableList<Observable<Books>> = arrayListOf<Observable<Books>>()
+//
+//        remoteDataSource.newGetBookCategory{
+//
+//            it.result.forEach {
+//                   mergerObservable.add(GoodsRemoteDataSource.api.newGetBooks(catalog_id = it.id.toInt()))
+//            }
+//            Observable.zip(mergerObservable, {
+//                it
+//            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe {
+//                    callback(it)
+//                }
+//        }
     }
 
 

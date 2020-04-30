@@ -11,7 +11,7 @@ import com.lfork.a98620.lfree.data.base.entity.Books
 import com.lfork.a98620.lfree.data.base.entity.Data
 import kotlinx.android.synthetic.main.category_grid_item.view.*
 
-class CategoryGridAdapter(val photos: List<Data>, val listener: ItemClickListener) :
+class BookGridApater(val photos: List<Data>, val listener: BookItemClickListener) :
     RecyclerView.Adapter<PhotoGridViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoGridViewHolder {
         return PhotoGridViewHolder(
@@ -28,24 +28,60 @@ class CategoryGridAdapter(val photos: List<Data>, val listener: ItemClickListene
     }
 
     override fun onBindViewHolder(holder: PhotoGridViewHolder, position: Int) {
-        holder.bind(photos[position],position,listener)
+        holder.bind(photos[position], listener)
     }
 }
 
-interface ItemClickListener {
-    fun onItemClick(bean:Data)
+class CategoryGridAdapter(
+    val categories: List<BookCategory>,
+    val listener: CategoryItemClickListener
+) :
+    RecyclerView.Adapter<PhotoGridViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoGridViewHolder {
+        return PhotoGridViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.category_grid_item,
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun getItemCount(): Int {
+        return categories.size
+    }
+
+    override fun onBindViewHolder(holder: PhotoGridViewHolder, position: Int) {
+        holder.bindCategory(categories[position], listener)
+    }
 }
+
+interface BookItemClickListener {
+    fun onBookItemClick(bean: Data)
+}
+
+
+interface CategoryItemClickListener {
+    fun onCategoryItemClick(bean: BookCategory)
+}
+
 
 class PhotoGridViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
 
 
-    fun bind(photo: Data, position: Int, listener: ItemClickListener) {
-        Glide.with(itemView).load(photo.img).into(itemView.cover_img)
+    fun bind(book: Data, listener: BookItemClickListener) {
+        Glide.with(itemView).load(book.img).into(itemView.cover_img)
         itemView.setOnClickListener {
-            listener.onItemClick(photo)
+            listener.onBookItemClick(book)
         }
 
     }
 
+    fun bindCategory(category: BookCategory, listener: CategoryItemClickListener) {
+        itemView.category_tv.text = category.catalog
+        itemView.setOnClickListener {
+            listener.onCategoryItemClick(category)
+        }
+    }
 
 }

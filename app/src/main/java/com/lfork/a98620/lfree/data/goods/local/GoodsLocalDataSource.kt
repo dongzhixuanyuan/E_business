@@ -51,7 +51,7 @@ object GoodsLocalDataSource : GoodsDataSource {
         TODO("Not yet implemented")
     }
 
-    override fun newGetBooksForCategory( categoryId: Int ,callback: (Array<Any>) -> Unit) {
+    override fun newGetBooksForCategory( categoryId: Int ,callback: (Books)->Unit) {
         TODO("Not yet implemented")
     }
 
